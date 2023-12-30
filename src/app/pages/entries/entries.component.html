@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="app-container" data-theme="dark">
+      <div class="app-top-bar">
+        <h1 class="app-heading">Please Enter the Temperature Value</h1>
+      </div>
+      <div class="app-content">
+        <!-- start temperature form -->
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <div class="input-container">
+                <div class="form-control">
+                    <label>Min Temperature</label>
+                    <input placeholder="Please Enter value" formControlName="minTemp" step="0.01" type="number" class="input-form required input-large"/>
+                    <span class="error-required" *ngIf="form.get('minTemp')?.errors?.['required'] && (form.get('maxTem')?.dirty || form.get('maxTem')?.touched)">* This field is required!</span>
+                </div>
+                <div class="form-control">
+                    <label>Max Temperature</label>
+                    <input placeholder="Please Enter value" formControlName="maxTemp" required step="0.01" type="number" class="input-form required input-large"/>
+                    <span class="error-required" *ngIf="form.get('maxTem')?.errors?.['required'] && (form.get('maxTem')?.dirty || form.get('maxTem')?.touched)">* This field is required!</span>
+                </div>
+                <div class="form-control">
+                    <label>Target Temperature</label>
+                    <input placeholder="Please Enter value" formControlName="targetTemp" step="0.01" type="number" class="input-form required input-large"/>
+                    <span class="error-required" *ngIf="form.get('targetTemp')?.errors?.['required'] && (form.get('maxTem')?.dirty || form.get('maxTem')?.touched)">* This field is required!</span>
+                </div>
+            </div>
+            <div class="error-alert" *ngIf="message && message != ''">
+                {{message}}
+            </div>
+            <div class="info-alert">
+              Please enter all value in degrees centigrade.
+            </div>
+            <div class="flex-button-container">
+                <button class="button text-center btn-submit button-large">
+                  Submit
+                </button>
+            </div>
+        </form>
+        <!-- end form -->
+      </div>
+    </div>
+  </div>
